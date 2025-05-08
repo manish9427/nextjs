@@ -7,18 +7,4 @@
 
 let str = "Hello";
 str = str.split('').reverse().join('');
-console.log(str); // Output: "World Hello"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(str); 
