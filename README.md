@@ -10,3 +10,12 @@
 
 - git branch
 - git checkout <branch Name>
+
+## Merge
+- git status
+- git add .
+- git commit -m "Your commit message"
+- git checkout master
+- git pull origin master
+- git merge header
+- git push origin master
