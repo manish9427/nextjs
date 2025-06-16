@@ -1,13 +1,14 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { setTitle } from '../redux/slices/headerSlice';
+
 export default function Header() {
-    return(
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-    )
+  const title = useSelector((state) => state.header.title);
+  const dispatch = useDispatch();
+
+  return (
+    <header>
+      <h1>{title}</h1>
+      <button onClick={() => dispatch(setTitle('New Title'))}>Change Title</button>
+    </header>
+  );
 }
