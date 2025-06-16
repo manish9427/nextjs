@@ -5,11 +5,15 @@
 - ts-node TypeScript/hello.ts
 
 # Git:
-- git statsh
-- git pull 
 
+## Pull
+- git stash
+- git pull origin master
+
+## New Branch
 - git branch
-- git checkout <branch Name>
+- git checkout <branch Name = header>
+- git push -u origin header // Push the branch to remote (if using GitHub, GitLab, etc.)
 
 ## Merge
 - git status
