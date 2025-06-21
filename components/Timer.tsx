@@ -28,7 +28,8 @@ const Timer : React.FC = () => {
 
     return (
       <div>
-        <div>{time}</div>
+        <h1>Timer</h1>
+        <p>{time}</p>
         <button onClick={startTimer}>Start</button>
         <button onClick={pauseTimer}>Pause</button>
         <button onClick={ResetTimer}>Reset</button>

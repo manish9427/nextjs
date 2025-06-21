@@ -1,13 +1,15 @@
 import About from "./about";
-import Headers from "../components/Header";
+import Header from "./header";
 import Timer from "../components/Timer";
+import Counter from "./counter";
 
 export default function Home() {
     return(
         <div>
-            <Headers/>
-            <Timer/>
             <About/>
+            <Header/>
+            <Timer/>
+            <Counter/>
         </div>
     )
 }
