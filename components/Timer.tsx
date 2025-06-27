@@ -1,37 +1,66 @@
 import React from 'react';
-import { useState,useRef } from 'react';
+import { useState,useRef,useEffect } from 'react';
 
 const Timer : React.FC = () => {
     const [time, setTime] = useState(0);
     const intervalRef = useRef<NodeJS.Timeout | null>(null);
-    
-    const startTimer = () => {
-    if (!intervalRef.current) {
-        intervalRef.current = setInterval(() => {
-         setTime(prev => prev + 1);
-        }, 1000);
-    }
-    };
-    const pauseTimer = () => {
-        if (intervalRef.current) {
-            clearInterval(intervalRef.current);
+
+    const [isRunning,setIsRunning] = useState(false);
+
+    const toggleTimer = () => {
+        if (isRunning) {
+            clearInterval(intervalRef.current!);
             intervalRef.current = null;
+        } else {
+            intervalRef.current = setInterval(() => {
+                setTime(prev => prev + 1);
+            }, 1000);
         }
+        setIsRunning(!isRunning);
     };
+
+
+    useEffect(() => {
+        document.title = `Timer App - ${isRunning ? 'Running' : 'Paused'} (${time}s)`;
+    }, [time, isRunning]);
+
+    const formatTime = (seconds: number): string => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+};
+    
+    // const startTimer = () => {
+    // if (!intervalRef.current) {
+    //     intervalRef.current = setInterval(() => {
+    //      setTime(prev => prev + 1);
+    //     }, 1000);
+    // }
+    // };
+    // const pauseTimer = () => {
+        
+    //     if (intervalRef.current) {
+    //         clearInterval(intervalRef.current);
+    //         intervalRef.current = null;
+    //     }
+    // };
     const ResetTimer = () => {
         setTime(0);
         if (intervalRef.current) {
             clearInterval(intervalRef.current);
             intervalRef.current = null;
         }
+        setIsRunning(false);
     };
 
     return (
       <div>
         <h1>Timer</h1>
-        <p>{time}</p>
-        <button onClick={startTimer}>Start</button>
-        <button onClick={pauseTimer}>Pause</button>
+        {/* <p>{time}</p> */}
+        <p>{formatTime(time)}</p>
+        <button onClick={toggleTimer}>{isRunning ? 'Pause' : 'Start'}</button>
+        {/* <button onClick={startTimer}>Start</button> */}
+        {/* <button onClick={pauseTimer}>Pause</button> */}
         <button onClick={ResetTimer}>Reset</button>
       </div>  
     )
