@@ -23,7 +23,3 @@
 - git pull origin master
 - git merge header
 - git push origin master
-
-manish
-verma
-age : 25
