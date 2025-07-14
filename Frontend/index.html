@@ -6,10 +6,41 @@
     <title>HTML</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<style>
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #parent{
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+</style>
 <body>
     <div id="parent">
         <button id="child">Click</button>
     </div>
 </body>
 </html>
-<script src="script.js" defer></script>
+<script src="script.js" defer>
+      document.getElementById("parent").addEventListener("click", () => {
+    console.log("Parent clicked");
+  });
+
+  document.getElementById("child").addEventListener("click", (e) => {
+    e.stopPropagation();
+    console.log("Child clicked")});
+</script>

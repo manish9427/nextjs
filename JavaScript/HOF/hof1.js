@@ -37,17 +37,24 @@ for(let i=0;i<arr.length;i++) {
      console.log(sum);
 }
 
+// Reverse
 for(let i = 0 ; i<arr.length;i++){
     let ans = arr[i].firstName.split('').reverse().join('');
     console.log(ans)
 }
-
 
 // Using forEach
 const detail = arr.forEach((item) => {
     console.log(item.firstName + " " + item.lastName);
 });
 console.log(detail);
+
+// Using for of loop
+for (const item of arr) {
+    console.log(item.firstName + " " + item.lastName);
+}
+
+
 
 
 
