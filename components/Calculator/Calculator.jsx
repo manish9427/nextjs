@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "./Calculator.scss";
+import "./Calculator.css";
 
 const Calculator = () => {
   const [input, setInput] = useState("");
@@ -26,13 +26,13 @@ const Calculator = () => {
     setInput((prev) => prev + value);
   };
   return (
-    <div className="calculator">
+    <div className="container">
       <h1>Calculator</h1>
       <div>
         <input type="text" value={input} />
       </div>
-      <div>// diplay result</div>
-      <div>
+      <div>Result:{input}</div>
+      <div className="buttons">
         {["7", "8", "9", "/"].map((value) => (
           <button
             key={value}
