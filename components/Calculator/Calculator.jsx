@@ -6,17 +6,12 @@ const Calculator = () => {
   const [result, setResult] = useState("");
 
   const calculate = () => {
-    try {
-      const calcResult = eval(input);
-      setResult(calcResult);
-    } catch (error) {
-      setResult("Error");
-    }
   };
 
   const handleClick = (value) => {
     setInput((prev) => prev + value);
   };
+  
   return (
     <div className="container">
       <h1>Calculator</h1>
