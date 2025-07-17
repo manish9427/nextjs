@@ -25,8 +25,6 @@ const Calculator = () => {
     setInput("");
   };
 
-
-  
   return (
     <div className="container">
       <h1>Calculator</h1>
@@ -35,7 +33,7 @@ const Calculator = () => {
         className="result"
         value={input}
         onChange={handleInputChange}
-        // onKeyPress={handleKeyPress}
+        placeholder="0"
       />
       <div className="buttons">
         {["7", "8", "9", "/"].map((value) => (
