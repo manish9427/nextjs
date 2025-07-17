@@ -2,20 +2,27 @@ import React, { useState } from "react";
 import "./Calculator.css";
 
 const Calculator = () => {
-  const [input, setInput] = useState();
-  const [result, setResult] = useState("");
+  const [input, setInput] = useState("");
 
   const handleClick = (value) => {
     setInput((prevInput) => (prevInput ? prevInput + value : value));
   };
 
+  const handleInputChange = (event) => {
+    setInput(event.target.value);
+  }
 
   const calculate = () => {
-
+    try {
+      const result = eval(input);
+      setInput(result.toString());
+    } catch (error) {
+      setInput("Error");
+    }
   };
 
   const clear = () => {
-    setInput(0);
+    setInput("");
   };
 
 
@@ -27,7 +34,7 @@ const Calculator = () => {
         type="text"
         className="result"
         value={input}
-        // onChange={handleInputChange}
+        onChange={handleInputChange}
         // onKeyPress={handleKeyPress}
       />
       <div className="buttons">
