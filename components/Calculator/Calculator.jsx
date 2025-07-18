@@ -29,6 +29,12 @@ const Calculator = () => {
     setInput((prevInput) => prevInput.slice(0, -1));
   };
 
+    const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      calculate();
+    }
+  };
+
   return (
     <div className="container">
       <h1>Calculator</h1>
@@ -37,6 +43,7 @@ const Calculator = () => {
         className="result"
         value={input}
         onChange={handleInputChange}
+        onKeyPress={handleKeyPress}
         placeholder="0"
       />
       <div className="buttons">
