@@ -10,7 +10,7 @@ const Calculator = () => {
 
   const handleInputChange = (event) => {
     setInput(event.target.value);
-  }
+  };
 
   const calculate = () => {
     try {
@@ -25,10 +25,14 @@ const Calculator = () => {
     setInput("");
   };
 
+  const back = () => {
+    setInput((prevInput) => prevInput.slice(0, -1));
+  };
+
   return (
     <div className="container">
       <h1>Calculator</h1>
-        <input
+      <input
         type="text"
         className="result"
         value={input}
@@ -38,7 +42,7 @@ const Calculator = () => {
       <div className="buttons">
         {["7", "8", "9", "/"].map((value) => (
           <button
-          className="buttonStyle"
+            className="buttonStyle"
             key={value}
             onClick={() => handleClick(value)}
           >
@@ -47,7 +51,7 @@ const Calculator = () => {
         ))}
         {["4", "5", "6", "*"].map((value) => (
           <button
-          className="buttonStyle"
+            className="buttonStyle"
             key={value}
             onClick={() => handleClick(value)}
           >
@@ -56,7 +60,7 @@ const Calculator = () => {
         ))}
         {["1", "2", "3", "-"].map((value) => (
           <button
-          className="buttonStyle"
+            className="buttonStyle"
             key={value}
             onClick={() => handleClick(value)}
           >
@@ -65,7 +69,7 @@ const Calculator = () => {
         ))}
         {["0", ".", "=", "+"].map((value) => (
           <button
-          className="buttonStyle"
+            className="buttonStyle"
             key={value}
             onClick={value === "=" ? calculate : () => handleClick(value)}
           >
@@ -73,9 +77,14 @@ const Calculator = () => {
           </button>
         ))}
       </div>
-      <button className="clearButton" onClick={clear}>
+      <div className="buttonContainers">
+        <button className="clearButton" onClick={clear}>
           Clear
-      </button>
+        </button>
+        <button className="backButton" onClick={back}>
+          Back
+        </button>
+      </div>
     </div>
   );
 };
