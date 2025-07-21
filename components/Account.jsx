@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Form = () => {
+const Account = () => {
     const [name, setName] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -68,4 +68,4 @@ const Form = () => {
     );
 };
 
-export default Form;
+export default Account;

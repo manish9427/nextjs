@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Slider = () => {
   const [value, setValue] = useState(50);
 
-  const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event) => {
     setValue(Number(event.target.value));
   };
 
