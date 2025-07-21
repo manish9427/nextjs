@@ -1,15 +1,16 @@
 import React from 'react';
 import { useState,useRef,useEffect } from 'react';
+import './Timer.css'; 
 
-const Timer : React.FC = () => {
+const Timer = () => {
     const [time, setTime] = useState(0);
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
+    const intervalRef = useRef(null);
 
     const [isRunning,setIsRunning] = useState(false);
 
     const toggleTimer = () => {
         if (isRunning) {
-            clearInterval(intervalRef.current!);
+            clearInterval(intervalRef.current);
             intervalRef.current = null;
         } else {
             intervalRef.current = setInterval(() => {
@@ -24,7 +25,7 @@ const Timer : React.FC = () => {
         document.title = `Timer App - ${isRunning ? 'Running' : 'Paused'} (${time}s)`;
     }, [time, isRunning]);
 
-    const formatTime = (seconds: number): string => {
+    const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;

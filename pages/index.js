@@ -1,6 +1,6 @@
 import About from "./about";
 import Header from "./header";
-import Timer from "../components/Timer";
+import Timer from "../components/Timer/Timer";
 import Counter from "./counter";
 import Slider from "../components/Slider"
 import Form from "../components/Form";
