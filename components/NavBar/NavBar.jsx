@@ -7,6 +7,9 @@ export default function NavBar({ onNavClick }) {
       <button onClick={() => onNavClick('Calculator')} style={{ cursor: 'pointer' }}>
         Calculator
       </button>
+            <button onClick={() => onNavClick('Counter')} style={{ cursor: 'pointer' }}>
+        Counter
+      </button>
     </nav>
   );
 }
