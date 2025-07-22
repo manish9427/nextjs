@@ -3,6 +3,9 @@ import Timer from '../Timer/Timer';
 import Calculator from '../Calculator/Calculator';
 import NavBar from '../NavBar/NavBar'
 import Counter from '../Counter/Counter';
+import Slider from '../Slider/Slider';
+import MyAccount from '../MyAccount/MyAccount';
+import Form from '../Form/Form';
 
 export default function HomePage() {
   const [activeComponent, setActiveComponent] = useState(null);
@@ -18,6 +21,9 @@ export default function HomePage() {
         {activeComponent === 'Timer' && <Timer />}
         {activeComponent === 'Calculator' && <Calculator />}
         {activeComponent === 'Counter' && <Counter />}
+        {activeComponent === 'Slider' && <Slider />}
+        {activeComponent === 'MyAccount' && <MyAccount />}
+        {activeComponent === 'Form' && <Form />}
       </div>
     </div>
   );

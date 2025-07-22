@@ -10,6 +10,15 @@ export default function NavBar({ onNavClick }) {
             <button onClick={() => onNavClick('Counter')} style={{ cursor: 'pointer' }}>
         Counter
       </button>
+      <button onClick={() => onNavClick('Slider')} style={{ cursor: 'pointer' }}>
+        Slider  
+      </button>
+      <button onClick={() => onNavClick('MyAccount')} style={{ cursor: 'pointer' }}>
+        My Account
+      </button>
+      <button onClick={() => onNavClick('Form')} style={{ cursor: 'pointer' }}>
+        Form  
+      </button>
     </nav>
   );
 }

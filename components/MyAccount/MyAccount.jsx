@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Account = () => {
+const MyAccount = () => {
     const [name, setName] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -68,4 +68,4 @@ const Account = () => {
     );
 };
 
-export default Account;
+export default MyAccount;
