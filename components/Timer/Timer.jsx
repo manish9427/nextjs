@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState,useRef,useEffect } from 'react';
-import './Timer.css'; 
 
 const Timer = () => {
     const [time, setTime] = useState(0);
@@ -59,7 +58,7 @@ const Timer = () => {
         <h1>Timer</h1>
         {/* <p>{time}</p> */}
         <p>{formatTime(time)}</p>
-        <button onClick={toggleTimer}>{isRunning ? 'Pause' : 'Start'}</button>
+        <button onClick={toggleTimer}>{isRunning ? 'Pause' : 'Start'}</button>&nbsp;
         {/* <button onClick={startTimer}>Start</button> */}
         {/* <button onClick={pauseTimer}>Pause</button> */}
         <button onClick={ResetTimer}>Reset</button>

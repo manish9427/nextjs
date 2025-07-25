@@ -14,10 +14,10 @@ export default function HomePage() {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px',textAlign: 'center'  }}>
       <h1>Welcome to My Next.js App</h1>
       <NavBar onNavClick={handleClick} />
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '20px'}}>
         {activeComponent === 'Timer' && <Timer />}
         {activeComponent === 'Calculator' && <Calculator />}
         {activeComponent === 'Counter' && <Counter />}
