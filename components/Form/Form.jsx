@@ -16,7 +16,6 @@ const Form = () => {
     <form onSubmit={handleSubmit}>
       <div style={{ textAlign: "center" }}>
         <h1>Form</h1>
-        <p>{!isTrue ? "Name" : name}</p>
         <input
           type="text"
           placeholder="Enter Name"
@@ -26,6 +25,9 @@ const Form = () => {
           }
         />
         <button type="submit">{buttonText}</button>
+      </div>
+      <div>
+        <p>{!isTrue ? "Name" : name}</p>
       </div>
     </form>
   );
