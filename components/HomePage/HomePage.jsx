@@ -6,6 +6,7 @@ import Counter from '../Counter/Counter';
 import Slider from '../Slider/Slider';
 import MyAccount from '../MyAccount/MyAccount';
 import Form from '../Form/Form';
+import Store from '../Store/Store';
 
 export default function HomePage() {
   const [activeComponent, setActiveComponent] = useState(null);
@@ -24,6 +25,7 @@ export default function HomePage() {
         {activeComponent === 'Slider' && <Slider />}
         {activeComponent === 'MyAccount' && <MyAccount />}
         {activeComponent === 'Form' && <Form />}
+        {activeComponent === 'Store' && <Store />}
       </div>
     </div>
   );

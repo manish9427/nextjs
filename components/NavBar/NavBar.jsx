@@ -10,6 +10,12 @@ export default function NavBar({ onNavClick }) {
     >
       <div style={{ display: "flex", gap: "10px" }}>
         <button
+          onClick={() => onNavClick("Counter")}
+          style={{ cursor: "pointer" }}
+        >
+          Counter
+        </button>
+        <button
           onClick={() => onNavClick("Timer")}
           style={{ cursor: "pointer" }}
         >
@@ -21,12 +27,7 @@ export default function NavBar({ onNavClick }) {
         >
           Calculator
         </button>
-        <button
-          onClick={() => onNavClick("Counter")}
-          style={{ cursor: "pointer" }}
-        >
-          Counter
-        </button>
+
         <button
           onClick={() => onNavClick("Slider")}
           style={{ cursor: "pointer" }}
@@ -39,7 +40,15 @@ export default function NavBar({ onNavClick }) {
         >
           Form
         </button>
+        <button
+                  onClick={() => onNavClick("Store")}
+          style={{ cursor: "pointer" }}
+        >
+          Store
+        </button>
+
       </div>
+
       <div>
         <button
           onClick={() => onNavClick("MyAccount")}
