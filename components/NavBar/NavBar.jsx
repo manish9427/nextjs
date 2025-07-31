@@ -1,61 +1,26 @@
-export default function NavBar({ onNavClick }) {
+import Link from 'next/link';
+import '../../styles/NavBar.css';
+
+export default function NavBar() {
+  const navItems = ['Counter', 'Timer', 'Calculator', 'Slider', 'Form', 'Store'];
+
   return (
-    <nav
-      style={{
-        display: "flex",
-        padding: "10px",
-        background: "#f0f0f0",
-        justifyContent: "space-between",
-      }}
-    >
-      <div style={{ display: "flex", gap: "10px" }}>
-        <button
-          onClick={() => onNavClick("Counter")}
-          style={{ cursor: "pointer" }}
-        >
-          Counter
-        </button>
-        <button
-          onClick={() => onNavClick("Timer")}
-          style={{ cursor: "pointer" }}
-        >
-          Timer
-        </button>
-        <button
-          onClick={() => onNavClick("Calculator")}
-          style={{ cursor: "pointer" }}
-        >
-          Calculator
-        </button>
-
-        <button
-          onClick={() => onNavClick("Slider")}
-          style={{ cursor: "pointer" }}
-        >
-          Slider
-        </button>
-        <button
-          onClick={() => onNavClick("Form")}
-          style={{ cursor: "pointer" }}
-        >
-          Form
-        </button>
-        <button
-                  onClick={() => onNavClick("Store")}
-          style={{ cursor: "pointer" }}
-        >
-          Store
-        </button>
-
+    <nav className="nav">
+      <div className="nav-group">
+        {navItems.map((item) => (
+          <Link key={item} href={`/${item.toLowerCase()}`}>
+            <button className="button" aria-label={`Go to ${item} page`}>
+              {item}
+            </button>
+          </Link>
+        ))}
       </div>
-
       <div>
-        <button
-          onClick={() => onNavClick("MyAccount")}
-          style={{ cursor: "pointer" }}
-        >
-          My Account
-        </button>
+        <Link href="/my-account">
+          <button className="button" aria-label="Go to My Account page">
+            My Account
+          </button>
+        </Link>
       </div>
     </nav>
   );

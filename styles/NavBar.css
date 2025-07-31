@@ -1,0 +1,23 @@
+.nav {
+  display: flex;
+  padding: 10px;
+  background: #f0f0f0;
+  justify-content: space-between;
+}
+
+.nav-group {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+  background: #ddd;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background: #ccc;
+}
