@@ -28,3 +28,9 @@
 - git pull origin master
 - git merge header
 - git push origin master
+
+
+# Quick Summary
+- Keyword	    Iterates Over	Ideal For
+- for...in	Keys/indexes	Objects
+- for...of	Values/items	Arrays, Strings, Sets, Maps
