@@ -1,4 +1,4 @@
-import Slider from '../components/Slider/Slider';
+import Slider from '../components/Slider';
 
 export default function SliderPage() {
   return <Slider />;

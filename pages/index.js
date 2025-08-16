@@ -1,12 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useApiMessage } from '../hooks/useApiMessage';
+
 export default function HomePage() {
-  const [apiMessage, setApiMessage] = useState('');
-  useEffect(() => {
-    fetch('/api/hello')
-      .then((res) => res.json())
-      .then((data) => setApiMessage(data.message))
-      .catch((error) => console.error('Error fetching API:', error));
-  }, []);
+  const apiMessage = useApiMessage();
   return (
     <div>
       <p>API Message: {apiMessage || 'Loading...'}</p>
