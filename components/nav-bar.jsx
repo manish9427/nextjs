@@ -1,16 +1,24 @@
-import Link from 'next/link';
-import '../styles/nav-bar.css';
+import Link from "next/link";
+import "../styles/nav-bar.css";
 
 export default function NavBar() {
-  const navItems = ['Counter', 'Timer', 'Calculator', 'Slider', 'Form', 'Store','Todo-List'];
+  const navItems = [
+    { label: "Counter", path: "counter" },
+    { label: "Timer", path: "timer" },
+    { label: "Calculator", path: "calculator" },
+    { label: "Slider", path: "slider" },
+    { label: "Form", path: "form" },
+    { label: "Store", path: "store" },
+    { label: "Todo List", path: "todo-list" },
+  ];
 
   return (
     <nav className="nav">
       <div className="nav-group">
-        {navItems.map((item) => (
-          <Link key={item} href={`/${item.toLowerCase()}`}>
-            <button className="button" aria-label={`Go to ${item} page`}>
-              {item}
+        {navItems.map(({ label, path }) => (
+          <Link key={path} href={`/${path}`}>
+            <button className="button" aria-label={`Go to ${label} page`}>
+              {label}
             </button>
           </Link>
         ))}

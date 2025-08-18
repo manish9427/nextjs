@@ -2,7 +2,7 @@ import React from 'react'
 
 const TodoList = () => {
   return (
-    <div>index</div>
+    <div>Todo List</div>
   )
 }
 
