@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import '../../styles/NavBar.css';
+import '../styles/nav-bar.css';
 
 export default function NavBar() {
-  const navItems = ['Counter', 'Timer', 'Calculator', 'Slider', 'Form', 'Store'];
+  const navItems = ['Counter', 'Timer', 'Calculator', 'Slider', 'Form', 'Store','Todo-List'];
 
   return (
     <nav className="nav">

@@ -34,3 +34,8 @@
 - Keyword	    Iterates Over	Ideal For
 - for...in	Keys/indexes	Objects
 - for...of	Values/items	Arrays, Strings, Sets, Maps
+
+# Quick
+- rcc
+- rfc
+- rafce

@@ -1,5 +1,5 @@
-import Store from '../components/Store';
+import Store from '../components/store';
 
 export default function StorePage() {
-  return <Store />;
+  return <Store/>;
 }

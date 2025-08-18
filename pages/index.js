@@ -1,4 +1,4 @@
-import { useApiMessage } from '../hooks/useApiMessage';
+import { useApiMessage } from '../hooks/use-api-message';
 
 export default function HomePage() {
   const apiMessage = useApiMessage();

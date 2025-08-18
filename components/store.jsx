@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../../styles/Store.css";
+import "../styles/store.css";
 
 const Store = () => {
   const [data, setData] = useState([]);

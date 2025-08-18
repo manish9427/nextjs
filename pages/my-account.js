@@ -1,4 +1,4 @@
-import MyAccount from '../components/MyAccount';
+import MyAccount from '../components/my-account';
 
 export default function MyAccountPage() {
   return <MyAccount />;
