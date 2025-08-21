@@ -36,3 +36,26 @@ for (const [key, count] of freqMap.entries()) {
     console.log(key); // key retains original type
   }
 }
+
+
+// ----------------------------------------------------Using for of loop
+
+const freq = {}
+const dup = []
+for(let num of arr){
+    if (freq[num]) {
+        freq[num] += 1;
+    } else {
+         freq[num] = 1;
+    }
+}
+
+console.log(freq)
+
+  for (const key in freq) {
+    if (freq[key] === 1) {
+      dup.push(Number(key)); 
+    }
+  }
+  
+  console.log(dup); 
