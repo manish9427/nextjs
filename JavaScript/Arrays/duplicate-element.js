@@ -53,7 +53,7 @@ for(let num of arr){
 console.log(freq)
 
   for (const key in freq) {
-    if (freq[key] === 1) {
+    if (freq[key] !== 1) {
       dup.push(Number(key)); 
     }
   }
