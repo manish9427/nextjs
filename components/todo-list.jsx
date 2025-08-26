@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/todo-list.css';
 const TodoList = () => {
   const [item,setitem] = useState([]);
 
@@ -13,15 +14,15 @@ const TodoList = () => {
   }
 
   return (
-    <div className="todo-list">
-      <div>
+    <>
+      <div className="todo-list">
         <h1>Add Item</h1>
         <input type="text" />
         <button onClick={addItem}>Add Item</button>
       </div>
-      <div>
+      <div className="item-list">
         <h1>Item List</h1>
-        <ul style={{ listStyleType:"none" , padding: "5px" }}>
+        <ul >
           {
             item.length>0 ? item.map((value,index)=>(
               <li key={index}>{value}</li>
@@ -31,7 +32,7 @@ const TodoList = () => {
           }
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 
