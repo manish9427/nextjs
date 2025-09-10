@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "../styles/nav-bar.css";
+import path from "path";
 
 export default function NavBar() {
   const navItems = [
@@ -10,6 +11,7 @@ export default function NavBar() {
     { label: "Form", path: "form" },
     { label: "Store", path: "store" },
     { label: "Todo List", path: "todo-list" },
+    {label:"Display",path:"display"}
   ];
 
   return (

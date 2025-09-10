@@ -5,3 +5,5 @@ const arr = [
 ];
 console.log(arr.map((item) => (item.username )));
 console.log(arr.map((item) => ({ username: item.username, age: item.age })));
+
+console.log(arr.filter((item) => (item.age > 25)));
