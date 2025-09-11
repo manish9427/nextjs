@@ -19,14 +19,21 @@ const duplicate = (arr) => {
 
   const duplicates = [];
   for (let key in freq) {
-    if (freq[key] > 1) {
+    if (freq[key] === 1) {
       duplicates.push(Number(key));
     }
   }
-  return duplicates;
+  return duplicates.sort((a,b)=>b-a);
 };
 
 console.log(duplicate(ans));
+
+let str = "hello world";
+console.log(str.split(" ").map(item=>item.split("").reverse().join("")).join(" "))
+
+let word = "hello";
+console.log(word.split("").reverse().join(""))
+
 
 
 
