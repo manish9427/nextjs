@@ -10,7 +10,7 @@ export default function Display() {
 
   return (
     <div>
-      <h1>{data[0].title}</h1>
+      {/* <h1 >{data[0].title}</h1> */}
       {/* <h1>{JSON.stringify(data)}</h1> */}
       {/* {data.map((item)=>(<p key={item.id}>{item.title}</p>))} */}
     </div>
