@@ -41,3 +41,23 @@ const findDuplicateAndUnique = ()=>{
 const arr = [10,9,8,7,6,5,1,2,3,4,5,1,2,3,4,5]
 let result = findDuplicateAndUnique(arr);
 console.log(result);
+
+
+// object methods
+const obj = { name: "abc", age: 20, city: "xyz" };
+const {name,age,city} = obj;
+console.log(name,age,city);
+
+const keys = Object.keys(obj);     
+const values = Object.values(obj); 
+const entries = Object.entries(obj); 
+console.log("Keys:", keys);
+console.log("Values:", values);
+console.log("Entries:", entries);
+
+const hasName = obj.hasOwnProperty("name"); 
+console.log("Has name property:", hasName);
+
+
+
+

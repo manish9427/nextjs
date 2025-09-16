@@ -11,7 +11,6 @@ data.forEach(item => {
   console.log(`ID: ${item.id}, Title: ${item.title}`);
 });
 
-
 const now = new Date();
 
 const date = now.toLocaleDateString();   // e.g. "12/9/2025"
