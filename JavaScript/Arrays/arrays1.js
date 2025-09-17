@@ -1,5 +1,3 @@
-console.log( "new salary ",20650 + 30000/12)
-
 const arr1 = [1, 2];
 const arr2 = [3, 4, 5,...arr1];
 
@@ -9,8 +7,6 @@ console.log(arr3) // Output: [3, 4, 5, 1, 2, 1, 2]
 const result = { arr1, arr2 };
 
 console.log(result); // Output: { arr1: [1, 2], arr2: [3, 4, 5, 1, 2] }
-
-
 
 function findDuplicateAndUnique(arr) {
   const duplicate = [];

@@ -37,7 +37,6 @@ for (const [key, count] of freqMap.entries()) {
   }
 }
 
-
 // ----------------------------------------------------Using for of loop
 
 const freq = {}
