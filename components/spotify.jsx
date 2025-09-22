@@ -1,11 +1,10 @@
-
 import { useEffect, useState } from "react";
 
-export default function SpotifyPlaylistCreator() {
-    const [playlistId, setPlaylistId] = useState(null);
-    
-    const token = "BQDKc360Ni3DYHIAO7Falg9oN-bSsuhcsZcJSF3k8yu0hGpQbuIhnsgyXQ8t4dljI8i9l5pmFyGkU4168Svs4PxWiLjm3NX8KWXKEi-6idbTuktzfsENNvXEJlfYa52kL2VHRRO1Qi8I6psN7Qwvd_KzZslR-bvpLcMaPnwLHse82y0uwCOvBw3hNa3wuRa9lnzHs57R36V94F2YU1xVxAbpeeO4OgtOUxyBBqHLPbrTFXSnmz48hw6Y50GulmYiHpC5XsQqPYq_jrR0wMb3uY_DpQkFNogI5Z5JJudNaq_BgDLLzNRZRphnx5wVX7yt"; // Replace with a valid token
-//   const token = "YOUR_SPOTIFY_TOKEN_HERE"; // Replace with a fresh token
+export default function Spotify() {
+  const [playlistId, setPlaylistId] = useState(null);
+
+  const token =
+    "BQBD_fVhamnGJZ6E2LdTKOS3pHcnZjS2-2Cie4O_PShePT1NSqkdm7lcSAPsC1aWg8QHy9IIHN417s2tpCIYGZl6PDCdx-OHnPz_zFu1SWaWR98BwxnzTylX7g5ABGKpPGQMk4Wgu-ibdWft6oi-pQgbov2AX0GGBNL3tlVjgXz9hkHlAv0YUVfiaZyjYY8e3MY9MnpN-wLezmVDwbnHLroBH0Jbbwl43DzeYwPIvUpXVEmk9g9P_SK8spnxAxjAozEjHSnjN_yu3-FbPS_zV7odOfPFKxLJmYHBlXIG7J8DWj4pBWbWcGPm7vxGz2fA";
 
   async function fetchWebApi(endpoint, method = "GET", body = null) {
     const res = await fetch(`https://api.spotify.com/${endpoint}`, {
@@ -23,7 +22,7 @@ export default function SpotifyPlaylistCreator() {
     const response = await fetchWebApi(
       "v1/me/top/tracks?time_range=long_term&limit=50"
     );
-    return response.items;
+    return Array.isArray(response?.items) ? response.items : [];
   }
 
   async function createPlaylist(tracksUri) {
@@ -47,19 +46,24 @@ export default function SpotifyPlaylistCreator() {
     return playlist;
   }
 
-  useEffect(() => {
-    async function setupPlaylist() {
-      try {
-        const topTracks = await getTopTracks();
-        const uris = topTracks.map((track) => track.uri);
-        const playlist = await createPlaylist(uris);
-        setPlaylistId(playlist.id);
-        console.log("Created playlist:", playlist.name, playlist.id);
-      } catch (err) {
-        console.error("Error creating playlist:", err);
+  async function setupPlaylist() {
+    try {
+      const topTracks = await getTopTracks();
+      if (!Array.isArray(topTracks)) {
+        throw new Error("Top tracks not returned as array");
       }
-    }
 
+      const uris = topTracks.map((track) => track.uri);
+      const playlist = await createPlaylist(uris);
+      setPlaylistId(playlist.id);
+      console.log("Created playlist:", playlist.name, playlist.id);
+    } catch (err) {
+      console.error("Error creating playlist:", err);
+    }
+  }
+
+  // 🔑 Run setupPlaylist when component mounts
+  useEffect(() => {
     setupPlaylist();
   }, []);
 

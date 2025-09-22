@@ -1,5 +1,5 @@
-import Spotify from '../components/spotify';
+import Spotify from "../components/spotify";
 
-export default function SpotifyPage() {
+export default function SliderPage() {
   return <Spotify />;
 }
