@@ -12,7 +12,8 @@ export default function NavBar() {
     { label: "Store", path: "store" },
     { label: "Todo List", path: "todo-list" },
     {label:"Display",path:"display"}
-    ,{label:"Spotify",path:"spotify"}
+    ,{label:"Spotify",path:"spotify"},
+    {label:"Practice",path:"practice"}
   ];
 
   return (
