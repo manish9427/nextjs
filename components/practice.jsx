@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-const name = ["Manish","Verma","is","a","developer"]
+const name = ["How are you?","I am fine","What about you?","I am good too","Let's code something new"]
 const Practice = () => {
     const [data,setData] = useState(name)
     const divStyle = {
@@ -13,10 +13,13 @@ const Practice = () => {
 
     const apidata = () =>{
         fetch('https://jsonplaceholder.typicode.com/posts')
-        .then((response) => response.json())
-        .then((json) => console.log(json))      
+        .then((res)=>res.json())
+        .then ((json)=>{
+            console.log(json);
+        })
     }
     apidata();
+
   return (
     <div style={divStyle}>
     {data.map((item,index)=>(
