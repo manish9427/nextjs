@@ -1,42 +1,47 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState,useEffect} from 'react'
 
-const name = ["How are you?","I am fine","What about you?","I am good too","Let's code something new"]
-const Practice = () => {
-    const [data,setData] = useState(name)
-    const [user,setUser] = useState([])
-    const divStyle = {
-        boxShadow:"0px 0px 10px black",
-        width : "50%",
-        margin:"50px auto",
-        padding:"20px",
-        // textAlign:"center"
-    }
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then((res)=>res.json())
-        .then ((json)=>{
+// Child component must be capitalized so React treats it as a component
+const Practice = ({state}) => {
+    const [user,setUser]=useState([]);
+    const [page,setPage]=useState(1);
 
-            setUser(json)
-        }
-        )
+    const userPerPage = 2;
 
-    // useEffect(()=>{
-    //     fetch('https://jsonplaceholder.typicode.com/posts')
-    //     .then((res)=>res.json())
-    //     .then ((json)=>{
-    //         // setData(json)
-    //         const titles = json.map(item => item.title);
-    //         setUser(titles);
-    //     })
-    // })
+    const indexOfLastUser = page * userPerPage;
+    const indexOfFirstUser = indexOfLastUser - userPerPage;
+    const currentUsers = user.slice(indexOfFirstUser, indexOfLastUser);
 
+    useEffect (()=>{
+        fetch('https://jsonplaceholder.typicode.com/users')
+        .then(res=>res.json())
+        .then(data=>{setUser(data)
+            console.log(data)
+        })
+    },[state])
   return (
-    <div style={divStyle}>
-    {user.map((item,index)=>(
-        <h1 key={index}>{item.title}</h1>
-    ))
-    }
+    <div>
+        {
+        currentUsers.map((item,index)=>(
+            <p key={index}>{item.name}</p>
+        ))
+        }
+        <p>{state}</p>
     </div>
   )
 }
 
-export default Practice
+const ParentComponent = () => {
+    const [state,setState] = useState(0);
+
+    return (
+        <div>
+            <Practice state={state}/>
+            <button onClick={()=>setState(state+1)}>Update State</button>
+        </div>
+    )
+}
+
+export default ParentComponent
+
+
+
