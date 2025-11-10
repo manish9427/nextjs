@@ -1,84 +1,89 @@
-// import React, { useState } from 'react';
-// import '../styles/todo-list.css';
-// const TodoList = () => {
-//   const [item,setitem] = useState([]);
-
-//   const addItem =() =>{
-//     const input = document.querySelector('input[type=text]');
-//     if (input.value.trim() === '') {
-//       alert('Please enter a valid item.');
-//       return;
-//     }
-//     setitem([ ...item,input.value]);
-//     input.value = ''; 
-//   }
-
-//   return (
-//     <>
-//       <div className="todo-list">
-//         <h1>Add Item</h1>
-//         <input type="text" />
-//         <button onClick={addItem}>Add Item</button>
-//       </div>
-//       <div className="item-list">
-//         <h1>Item List</h1>
-//         <ul >
-//           {
-//             item.length>0 ? item.map((value,index)=>(
-//               <li key={index}>{value}</li>
-//             )) : (
-//               <li>Empty</li>
-//             )
-//           }
-//         </ul>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default TodoList;
-
-
-import React, { useState } from 'react';
-import styles from '../styles/todo-list.css';
+import React, { useState } from 'react'
 
 const TodoList = () => {
   const [items, setItems] = useState([]);
   const [inputValue, setInputValue] = useState('');
 
-  const handleAddItem = () => {
-    if (inputValue.trim() === '') {
-      alert('Please enter a valid item.');
-      return;
+  // editing state
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingValue, setEditingValue] = useState('');
+
+  const handleInput = (e) => {
+    setInputValue(e.target.value);
+  }
+
+  const addItem = () => {
+    if (inputValue.trim()) {
+      setItems((prev) => [...prev, inputValue.trim()]);
+      setInputValue('');
     }
-    setItems([...items, inputValue]);
-    setInputValue('');
-  };
+  }
+
+  const handleDelete = (index) => {
+    setItems((prev) => prev.filter((_, i) => i !== index));
+    // if deleting the item currently being edited, cancel edit
+    if (editingIndex === index) {
+      setEditingIndex(null);
+      setEditingValue('');
+    }
+  }
+
+  const startEdit = (index) => {
+    setEditingIndex(index);
+    setEditingValue(items[index]);
+  }
+
+  const cancelEdit = () => {
+    setEditingIndex(null);
+    setEditingValue('');
+  }
+
+  const saveEdit = () => {
+    if (editingValue.trim() === '') return; // don't save empty
+    setItems((prev) => prev.map((it, i) => (i === editingIndex ? editingValue.trim() : it)));
+    cancelEdit();
+  }
 
   return (
-    <div >
-      <div className="todo-list">
-        <h1>Add Item</h1>
+    <div>
+      <div>
         <input
           type="text"
+          placeholder='Add Item'
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={handleInput}
+          onKeyPress={(e) => e.key === 'Enter' && addItem()}
         />
-        <button onClick={handleAddItem}>Add Item</button>
+        <button onClick={addItem}>Add Item</button>
       </div>
-      <div className="item-list">
-        <h1>Item List</h1>
-        <ul >
-          {items.length > 0 ? (
-            items.map((value, index) => <li key={index}>{value}</li>)
+      <div>
+        <p>Item List</p>
+        {
+          items.length === 0 ? (
+            <p>No items yet</p>
           ) : (
-            <li>Empty</li>
-          )}
-        </ul>
+            items.map((it, index) => (
+              <div key={index} style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 6 }}>
+                {editingIndex === index ? (
+                  <>
+                    <input value={editingValue} onChange={(e) => setEditingValue(e.target.value)} />
+                    <button onClick={saveEdit}>Save</button>
+                    <button onClick={cancelEdit}>Cancel</button>
+                  </>
+                ) : (
+                  <>
+                    <span>{it}</span>
+                    <button onClick={() => startEdit(index)}>Edit</button>
+                    <button onClick={() => handleDelete(index)}>Delete</button>
+                  </>
+                )}
+              </div>
+            ))
+          )
+        }
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TodoList;
-
+export default TodoList
