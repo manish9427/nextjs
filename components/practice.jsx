@@ -1,57 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const practice = () => {
-  const [item, setItem] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const handleInput = (e) => {
-    setInputValue(e.target.value);
-  };
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const dataPerPage = 5;
 
-  const addItem = () => {
-    if (inputValue.trim()) {
-      setItem([...item, inputValue.trim()]);
-      setInputValue("");
-    }
-  };
+  const totalPage = Math.ceil(data.length / dataPerPage);
+  const lastIndex = page * dataPerPage;
+  const firstIndex = lastIndex - dataPerPage;
+  const currentData = data.slice(firstIndex, lastIndex);
 
-  const handleEdit = (id) => {
-    const newValue = prompt("Enter new value", item[id]);
-    if (newValue !== null && newValue.trim()) {
-      const updatedItems = item.map((itm, index) =>
-        index === id ? newValue.trim() : itm
-      );
-      setItem(updatedItems);
-    }
-  };
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
 
-  const handleDelete = (id) =>{
-    setItem(item.filter((_,index) => index !== id));
+  const handleIncrement = () => {
+    if(lastIndex<data.length)
+    setPage(prev => prev+1)
   }
 
+  const handleDecrement =() => {
+    if(page>1){
+      setPage(prev => prev-1)
+    }
+  }
 
+  console.log(data);
   return (
     <div>
+      <h1>Data</h1>
       <div>
-        <input
-          type="text"
-          placeholder="Add Item"
-          value={inputValue}
-          onChange={handleInput}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") addItem();
-          }}
-        />
-        <button onClick={addItem}>Add</button>
+      {/* <pre key={currentData.id}>{JSON.stringify(data,null,2)}</pre> */}
+        {currentData.map((item) => (
+          <pre key={item.id}>{item.title}</pre>
+        ))}
       </div>
       <div>
-        <p>Item List</p>
-        {item.map((item, index) => (
-          <div key={index}>
-            <span>{item}</span>
-            <button onClick={()=>handleEdit(index)}>Edit</button>
-            <button onClick={()=>handleDelete(index)}>Delete</button>
-          </div>
-        ))}
+        <button onClick={handleIncrement}>+</button>
+        <span>{page}/{totalPage}</span>
+        <button onClick={handleDecrement}>-</button>
       </div>
     </div>
   );
