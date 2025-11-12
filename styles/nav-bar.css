@@ -1,23 +1,47 @@
+/* styles/nav-bar.css */
+
 .nav {
-  display: flex;
-  padding: 10px;
-  background: #f0f0f0;
-  justify-content: space-between;
+  background-color: #222;       /* dark background for contrast */
+  padding: 1rem;
 }
 
 .nav-group {
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;              /* wrap buttons on smaller screens */
+  gap: 0.75rem;                 /* spacing between buttons */
+  justify-content: center;      /* center align items */
 }
 
 .button {
-  cursor: pointer;
-  padding: 5px 10px;
+  background-color: #0070f3;    /* Next.js blue */
+  color: #fff;
   border: none;
-  background: #ddd;
-  border-radius: 4px;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;        /* remove underline if Link renders <a> */
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .button:hover {
-  background: #ccc;
+  background-color: #005bb5;    /* darker blue on hover */
+  transform: translateY(-2px);  /* subtle lift effect */
+}
+
+.button:active {
+  background-color: #004080;    /* even darker when clicked */
+  transform: translateY(0);     /* reset lift */
+}
+
+@media (max-width: 600px) {
+  .nav-group {
+    flex-direction: column;     /* stack buttons vertically on small screens */
+    align-items: center;
+  }
+
+  .button {
+    width: 100%;                /* full width buttons on mobile */
+    text-align: center;
+  }
 }
