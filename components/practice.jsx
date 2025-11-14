@@ -2,22 +2,35 @@ import React, { useState } from "react";
 
 const practice = () => {
   const [item, setItem] = useState([]);
-  const [inputValue,setInputValue] = useState('');
-
+  const [inputValue, setInputValue] = useState("");
+  const handleInput = (e) => {
+    setInputValue(e.target.value);
+  };
+  const addItem = () => {
+    setItem([...item, inputValue]);
+    setInputValue("");
+  };
   return (
     <div>
-      {/* <input type="text" placeholder="Add Item" value={inputValue} onChange={setInputValue((e)=>e.target.value)} onKeyDown={(e)=>e.key === 'Enter' && setItem()} /> */}
       <div>
-        {item.length>0?item:"No Item Found"}
+        <input type="text" value={inputValue} onChange={handleInput} />
+        <button onClick={addItem}>Add Item</button>
+      </div>
+      <div>
+        <p>Added Item</p>
+        {item.map((item, index) => (
+          <div key={index}>
+            <span>{item}</span>
+            <button onClick={handleEdit}>Edit</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
 
 export default practice;
-
-
-
 
 // import React, { useState, useEffect } from "react";
 
