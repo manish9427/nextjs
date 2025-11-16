@@ -10,6 +10,21 @@ const practice = () => {
     setItem([...item, inputValue]);
     setInputValue("");
   };
+
+  const handleEdit =(index)=>{
+    const newInput = prompt("Edit item:", item[index]);
+        if (newInput) {
+      const updatedItems = [...item];
+      updatedItems[index] = newInput;
+      setItem(updatedItems);
+    }
+  }
+
+  const handleDelete =(index)=>{
+    const updatedItems = item.filter((_, i) => i !== index);
+    setItem(updatedItems);
+  }
+
   return (
     <div>
       <div>
@@ -21,8 +36,8 @@ const practice = () => {
         {item.map((item, index) => (
           <div key={index}>
             <span>{item}</span>
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button onClick={()=>handleEdit(index)}>Edit</button>
+            <button onClick={()=>handleDelete(index)}>Delete</button>
           </div>
         ))}
       </div>
