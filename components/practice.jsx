@@ -13,7 +13,7 @@ const practice = () => {
 
   const handleEdit =(index)=>{
     const newInput = prompt("Edit item:", item[index]);
-        if (newInput) {
+      if (newInput) {
       const updatedItems = [...item];
       updatedItems[index] = newInput;
       setItem(updatedItems);
@@ -21,7 +21,7 @@ const practice = () => {
   }
 
   const handleDelete =(index)=>{
-    const updatedItems = item.filter((_, i) => i !== index);
+    const updatedItems = item.filter((e, i) => i !== index);
     setItem(updatedItems);
   }
 
