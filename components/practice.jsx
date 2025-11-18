@@ -11,24 +11,29 @@ const practice = () => {
     setInputValue("");
   };
 
-  const handleEdit =(index)=>{
+  const handleEdit = (index) => {
     const newInput = prompt("Edit item:", item[index]);
-      if (newInput) {
+    if (newInput) {
       const updatedItems = [...item];
       updatedItems[index] = newInput;
       setItem(updatedItems);
     }
-  }
+  };
 
-  const handleDelete =(index)=>{
+  const handleDelete = (index) => {
     const updatedItems = item.filter((e, i) => i !== index);
     setItem(updatedItems);
-  }
+  };
 
   return (
     <div>
       <div>
-        <input type="text" value={inputValue} onChange={handleInput} />
+        <input
+          type="text"
+          value={inputValue}
+          onChange={handleInput}
+          onKeyDown={(e) =>e.key === "Enter" && addItem()}
+        />
         <button onClick={addItem}>Add Item</button>
       </div>
       <div>
@@ -36,8 +41,8 @@ const practice = () => {
         {item.map((item, index) => (
           <div key={index}>
             <span>{item}</span>
-            <button onClick={()=>handleEdit(index)}>Edit</button>
-            <button onClick={()=>handleDelete(index)}>Delete</button>
+            <button onClick={() => handleEdit(index)}>Edit</button>
+            <button onClick={() => handleDelete(index)}>Delete</button>
           </div>
         ))}
       </div>
