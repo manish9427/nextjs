@@ -1,52 +1,56 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState } from "react";
 
 const practice = () => {
-  const [data,setData] = useState([])
-  const [page,setPage] = useState(1)
-  useEffect(()=>{
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(res=>res.json()).then(data=>setData(data))
-  },[])
+  const [item, setItem] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-  console.log("data",data)
+  const handleInput = (e) => {
+    setInputValue(e.target.value);
+  };
 
-  const perPage = 5;
-  const totalPage = Math.ceil(data.length/perPage)
-  console.log("totalPage",totalPage)
-  const lastIndex = page*perPage;
-  const firstIndex = lastIndex - perPage;
-  const currentData = data.slice(firstIndex,lastIndex) 
-  console.log("currentData",currentData)
+  const addItem = () => {
+    setItem([...item, inputValue]);
+    setInputValue("");
+  };
 
-  const handleIncrement = () => {
-    if(page<totalPage){
-      setPage(prev=> prev+1)
-    }
+  const handleEdit = (index) =>{
+    const newInput = prompt("Edit Item", item[index])
+    const updateditem = [...item]
+    updateditem[index] = newInput
+    setItem(updateditem)
   }
 
-    const handleDecrement = () => {
-    if(page>1){
-      setPage(prev => prev-1)
-    }
-  }
-
+   const handleRemove = (index) => {
+    const updateItem = item.filter((_,i)=>i!==index)
+    setItem(updateItem)
+   }
   return (
     <div>
-      {/* <pre key={data.id}>{JSON.stringify(data,null,2)}</pre> */}
-      {
-        currentData.map((item,index)=>(
-          <div key={index}>
-            <pre>{item.title}</pre>
-          </div> 
-        ))
-      }
       <div>
-        <button onClick={handleIncrement}>+</button>
-        <span>{page}/{totalPage}</span>
-        <button onClick={handleDecrement}>-</button>
+        <input
+          type="text"
+          placeholder="Add item"
+          value={inputValue}
+          onChange={handleInput}
+          onKeyDown={(e) => e.key === "Enter" && addItem()}
+        />
+        <button onClick={addItem}>Add item</button>
+      </div>
+
+      <div>
+        <p>List of Item</p>
+        {
+          item.map((item,index)=>(
+            <div key={index}>
+              <span>{item}</span>
+              <button onClick={()=>handleEdit(index)}>Edit</button>
+              <button onClick={()=>handleRemove(index)}>Remove</button>
+            </div>
+          ))
+        }
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default practice
+export default practice;
