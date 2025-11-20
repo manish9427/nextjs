@@ -9,6 +9,7 @@ const practice = () => {
   };
 
   const addItem = () => {
+    if(!inputValue.trim()) return ;
     setItem([...item, inputValue]);
     setInputValue("");
   };
