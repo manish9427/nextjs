@@ -1,29 +1,54 @@
-import React,{useEffect,useState} from 'react'
+import React, { useState, useEffect } from "react";
 
 const practice = () => {
-  const [data,setData] = useState([]);
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
 
-  useEffect(()=>{
-     fetch('https://jsonplaceholder.typicode.com/posts')
-    .then((res) => res.json())
-    .then(data => {
-      setData(data)
-      console.log(data)
-    })
-  },[])
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts`)
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
+
+  const dataPerPage = 5;
+  const totalPage = Math.ceil(data.length/dataPerPage)
+  // const pageIndex = page * dataPerPage - dataPerPage;
+  // const currentData = data.slice(pageIndex, pageIndex + dataPerPage)
+  const lastIndex = page*dataPerPage;
+  const firstIndex = lastIndex - dataPerPage;
+  const currentData = data.slice(firstIndex, lastIndex)
+
+
+  const handleIncrement = () => {
+    if(page<totalPage){
+      setPage(prev => prev+1)
+    }
+  }
+
+    const handleDecrement = () => {
+    if(page>1){
+      setPage(prev => prev+1)
+    }
+  }
+
   return (
-    // <pre key={data.id}>{JSON.stringify(data,null,2)}</pre>
     <div>
-
+      {/* <pre key={data.id}>{JSON.stringify(data, null, 2)}</pre> */}
       {
-        data.map((item,index)=>(
-          <pre key={item.index}>
-            {item.title}
-          </pre>
+        currentData.map((item,index)=>(
+          <pre key={item.id}>{item.title}</pre>
         ))
       }
-    </div>
-  )
-}
 
-export default practice
+      <div>
+        <button onClick={handleIncrement}>+</button>
+        <span>{page}/{totalPage}</span>
+        <button onClick={handleDecrement}>-</button>
+      </div>
+    </div>
+  );
+};
+
+export default practice;
