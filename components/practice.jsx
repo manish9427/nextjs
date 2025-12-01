@@ -1,54 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React,{useState} from 'react'
 
 const practice = () => {
-  const [data, setData] = useState([]);
-  const [page, setPage] = useState(1);
+  const [item,setItem] = useState([]);
+  const [inputValue,setInputValue] = useState('');
 
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/posts`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
-
-  const dataPerPage = 5;
-  const totalPage = Math.ceil(data.length/dataPerPage)
-  // const pageIndex = page * dataPerPage - dataPerPage;
-  // const currentData = data.slice(pageIndex, pageIndex + dataPerPage)
-  const lastIndex = page*dataPerPage;
-  const firstIndex = lastIndex - dataPerPage;
-  const currentData = data.slice(firstIndex, lastIndex)
-
-
-  const handleIncrement = () => {
-    if(page<totalPage){
-      setPage(prev => prev+1)
-    }
+  const handleInput =(e)=>{
+    setInputValue(e.target.value)
   }
 
-    const handleDecrement = () => {
-    if(page>1){
-      setPage(prev => prev+1)
-    }
+  const addItem = () => {
+    setItem([...item,inputValue]);
+    setInputValue('');
   }
-
   return (
     <div>
-      {/* <pre key={data.id}>{JSON.stringify(data, null, 2)}</pre> */}
-      {
-        currentData.map((item,index)=>(
-          <pre key={item.id}>{item.title}</pre>
-        ))
-      }
-
       <div>
-        <button onClick={handleIncrement}>+</button>
-        <span>{page}/{totalPage}</span>
-        <button onClick={handleDecrement}>-</button>
+      <input type="text" placeholder='Add item' value={inputValue} onChange={handleInput}/>
+      <button onClick={addItem}>Add Item</button>
+
+      </div>
+      <div>
+        <p>Item List</p>
+        {
+          item.map((item,index)=>(
+            <pre key={item.index}>{item}</pre>
+          ))
+        }
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default practice;
+export default practice
