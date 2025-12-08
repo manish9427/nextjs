@@ -1,46 +1,52 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState } from "react";
 
 const practice = () => {
-  const [data,setData] = useState([]);
-  const [page,setPage] = useState(1)
-  useEffect(()=>{
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(res => res.json())
-    .then(json => {console.log(json)
-      setData(json)
-    })
-  })
+  const [item, setItem] = useState([]);
+  const [value, setValue] = useState("");
+  const addValue = (e) => {
+    setValue(e.target.value);
+  };
+  const addItem = () => {
+    setItem([...item, value]);
+    setValue("");
+  };
 
-  const dataPerPage = 5;
-  const totalPage = Math.ceil(data.length/dataPerPage)
-  const lastIndex = page*dataPerPage;
-  const firstIndex = lastIndex-dataPerPage;
-  const currentData = data.slice(firstIndex,lastIndex)
-
-  const handleIncrement = () => {
-    if(page<totalPage){
-      setPage(prev => prev+1)
-    }
+  const handleEdit = (index)=>{
+    const newItem = prompt("Add Item", item[index])
+    const updateItem = [...item]
+    updateItem[index] = newItem
+    setItem(updateItem)
   }
 
-  const handleDecrement = () => {
-    if(page>1){
-      setPage(prev => prev-1)
-    }
+  const handleRemove = (index)=>{
+    const updateItem = item.filter((_,i)=>i!== index)
+    setItem(updateItem)
   }
   return (
     <div>
-      {/* <pre key={data.id}>{JSON.stringify(data,null,2)}</pre> */}
-      {
-        currentData.map((item,index)=>(
-          <pre key={item.index}>{item.title}</pre>
-        ))
+      <input
+        type="text"
+        placeholder="Add item"
+        value={value}
+        onChange={addValue}
+      />
+      <button onClick={addItem}>Add Item</button>
+      <h1>Item list</h1>
+      {item.length === 0 ? 
+        "Array is Empty"
+       : 
+        <div>
+          {item.map((item, index) => (
+            <div id={index}>
+              <span>{item}</span>
+              <button onClick={()=>handleEdit(index)}>Edit</button>
+              <button onClick={()=>handleRemove(index)}>Remove</button>
+            </div>
+          ))}
+        </div>
       }
-      <button onClick={handleIncrement}>+</button>
-      <span>{page}/{totalPage}</span>
-      <button onClick={handleDecrement}>-</button>
     </div>
-  )
-}
+  );
+};
 
-export default practice
+export default practice;
