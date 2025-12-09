@@ -1,52 +1,45 @@
-import React, { useState } from "react";
+import React,{useState} from 'react'
 
 const practice = () => {
-  const [item, setItem] = useState([]);
-  const [value, setValue] = useState("");
+  const [item,setItem] = useState([]);
+  const [value,setValue] = useState('');
   const addValue = (e) => {
     setValue(e.target.value);
-  };
-  const addItem = () => {
-    setItem([...item, value]);
-    setValue("");
-  };
+  }
 
-  const handleEdit = (index)=>{
-    const newItem = prompt("Add Item", item[index])
-    const updateItem = [...item]
-    updateItem[index] = newItem
-    setItem(updateItem)
+  const addItem = () =>{
+    setItem([...item,value])
+    setValue('')
+  }
+
+  const handleEdit =(index) => {
+    const newValue = prompt("Add Value", item[index])
+    const updateValue = [...item]
+    updateValue[index] = newValue
+    setItem(updateValue)
   }
 
   const handleRemove = (index)=>{
-    const updateItem = item.filter((_,i)=>i!== index)
-    setItem(updateItem)
+    const updateValue = item.filter((_,i)=>i!==index)
+    setItem(updateValue)
   }
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Add item"
-        value={value}
-        onChange={addValue}
-      />
+      <input type="text" placeholder='Add item' value={value} onChange={addValue} />
       <button onClick={addItem}>Add Item</button>
-      <h1>Item list</h1>
-      {item.length === 0 ? 
-        "Array is Empty"
-       : 
-        <div>
-          {item.map((item, index) => (
-            <div id={index}>
+      <div>
+        {
+          item.map((item,index)=>(
+            <div id={item.index}>
               <span>{item}</span>
               <button onClick={()=>handleEdit(index)}>Edit</button>
               <button onClick={()=>handleRemove(index)}>Remove</button>
             </div>
-          ))}
-        </div>
-      }
+          ))
+        }
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default practice;
+export default practice
