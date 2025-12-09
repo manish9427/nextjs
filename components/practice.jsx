@@ -1,43 +1,43 @@
-import React,{useState} from 'react'
+import React, { useState,useEffect } from 'react'
 
 const practice = () => {
-  const [item,setItem] = useState([]);
-  const [value,setValue] = useState('');
-  const addValue = (e) => {
-    setValue(e.target.value);
-  }
+  const [data,setData]  = useState([]);
+  const [page,setPage] = useState(1);
+  useEffect(()=>{
+    fetch("https://jsonplaceholder.typicode.com/todos")
+    .then(res => res.json())
+    .then(data =>{
+      console.log(data)
+      setData(data);
+    })
+  },[])
+  const dataPerPage = 5;
+  const totalPage = Math.ceil(data.length/dataPerPage)
+  const lastIndex = page*dataPerPage // 1*5 = 5
+  const firstIndex = lastIndex - dataPerPage; // 5 - 5 = 0
+  const currentData = data.slice(firstIndex,lastIndex)
 
-  const addItem = () =>{
-    setItem([...item,value])
-    setValue('')
+  const handleIncrement = () => {
+    if(page<totalPage){
+      setPage(prev => prev+1)
+    }
   }
-
-  const handleEdit =(index) => {
-    const newValue = prompt("Add Value", item[index])
-    const updateValue = [...item]
-    updateValue[index] = newValue
-    setItem(updateValue)
-  }
-
-  const handleRemove = (index)=>{
-    const updateValue = item.filter((_,i)=>i!==index)
-    setItem(updateValue)
+  const handleDecrement = () => {
+    if(page>1){
+      setPage(prev => prev-1 )
+    }
   }
   return (
     <div>
-      <input type="text" placeholder='Add item' value={value} onChange={addValue} />
-      <button onClick={addItem}>Add Item</button>
-      <div>
-        {
-          item.map((item,index)=>(
-            <div id={item.index}>
-              <span>{item}</span>
-              <button onClick={()=>handleEdit(index)}>Edit</button>
-              <button onClick={()=>handleRemove(index)}>Remove</button>
-            </div>
-          ))
-        }
-      </div>
+      {/* <pre id={data.id}>{JSON.stringify(data,null,2)}</pre> */}
+      {
+        currentData.map((item)=>(
+          <pre id={item.id}>{item.title}</pre>
+        ))
+      }
+      <button onClick={handleIncrement}>+</button>
+      <span>{page}/{totalPage}</span>
+      <button onClick={handleDecrement}>-</button>
     </div>
   )
 }
