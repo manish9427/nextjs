@@ -1,64 +1,43 @@
-import React, { useState } from "react";
+import React,{useState,useEffect} from 'react'
 
 const practice = () => {
-  const [item, setItem] = useState([]);
-  const [value, setValue] = useState("");
+  const [data,setData] = useState([])
+  const [page,setPage] = useState(1)
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/todos')
+    .then(res=>res.json())
+    .then(json=>{
+      setData(json)
+    })
+  })
+  const dataPerPage = 5;
+  const lastIndex = page*dataPerPage
+  const firstIndex = lastIndex - dataPerPage;
+  const currentData = data.slice(firstIndex,lastIndex)
+  const totalPage = Math.ceil(data.length/dataPerPage)
 
-  const handleInput = (e) => {
-    setValue(e.target.value);
-  };
-
-  const handleAddItem = () => {
-    if (value !== "") {
-      setItem([...item, value]);
-      setValue("");
+  const handleIncrement = () =>{
+    if(page<totalPage)
+    setPage(prev=>prev+1)
+  }
+  const handleDecrement = () =>{
+    if(page>1){
+      setPage(prev=>prev-1)
     }
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      handleAddItem();
-    }
-  };
-
-  const handleEdit = (index) => {
-    const newValue = prompt("Add new Value", item[index]);
-    if (newValue !== "" && newValue !== null) {
-      const updatedValue = [...item];
-      updatedValue[index] = newValue;
-      setItem(updatedValue);
-    }
-  };
-
-  const handleRemove = (index) => {
-    const updatedValue = item.filter((_, i) => i !== index);
-    setItem(updatedValue);
-  };
-
+  }
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Add Item"
-        value={value}
-        onChange={handleInput}
-        onKeyDown={handleKeyDown}
-      />
-      <button onClick={handleAddItem}>Add Item</button>
-
-      <div>
-        <p>Input Values</p>
-        <pre key={item.index}>{JSON.stringify(item)}</pre>
-        {item.map((item, index) => (
-          <div key={index}>
-            <span>{item}</span>
-            <button onClick={() => handleEdit(index)}>Edit</button>
-            <button onClick={() => handleRemove(index)}>Remove</button>
-          </div>
-        ))}
-      </div>
+      {/* <pre key={data.id}>{JSON.stringify(data,null,2)}</pre> */}
+      {
+        currentData.map((item)=>(
+          <pre key={item.id}>{item.title}</pre>
+        ))
+      }
+      <button onClick={handleIncrement}>+</button>
+      <span>{page}/{totalPage}</span>
+      <button onClick={handleDecrement}>-</button>
     </div>
-  );
-};
+  )
+}
 
-export default practice;
+export default practice 
