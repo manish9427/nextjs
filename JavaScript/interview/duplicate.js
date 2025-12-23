@@ -1,15 +1,16 @@
-const func = (arr) =>{
+const fun = (arr) =>{
     const freq={}
     for(let num of arr){
         if(freq[num]){
-            freq[num]+=1
+            freq[num] += 1
         }else{
-            freq[num] =1
+            freq[num] = 1
         }
     }
 
     const duplicate = [];
     const unique = [];
+
     for(let key in freq){
         if(freq[key]>1){
             duplicate.push(Number(key))
@@ -18,8 +19,10 @@ const func = (arr) =>{
         }
     }
 
-    return {duplicate,unique};
+    return {duplicate,unique}
+
+
 }
-const arr = [1,1,1,2,2,3,4]
-const {duplicate:dup,unique:un} = func(arr)
+const arr = [1,2,1,2,3,4]
+const {duplicate:dup,unique:un} = fun(arr)
 console.log(dup,un)
