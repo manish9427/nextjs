@@ -4,44 +4,32 @@
 // throtling
 
 
-// closure
+  
 
-const outer = () =>{
-    let count = 0;
-    const inner = () =>{
-        count++
-        console.log(count)
-    }
-    return inner
+const fun = () => {
+  const timer = setInterval(() => {
+    console.log("Hello");
+  }, 1000);
+
+  // return the timer id so you can stop it later
+  return timer;
+};
+
+const timerId = fun();
+
+// stop after 5 seconds
+setTimeout(() => {
+  clearInterval(timerId);
+  console.log("Stopped");
+}, 5000);
+
+
+
+
+// Closure
+
+let i 
+for(i=0;i<5;i++){
+  setTimeout(()=>{console.log(i)},100)
 }
 
-const counter = outer()
-counter()
-counter()
-counter()
-counter()
-counter()    
-
-const fun = () =>{
-    let count = 0;
-    const timer = setInterval(()=>{
-        console.log("Hello", ++count)
-    },1000)
-    return timer
-}
-fun()
-
-// debounce
-const debounce = (func, delay) =>{
-    let timer;      
-    return function(...args){
-        if(timer) clearTimeout(timer)
-        timer = setTimeout(()=>{
-            func.apply(this,args)
-        }       
-
-        ,delay)
-    }   
-}
-
-debounce()
