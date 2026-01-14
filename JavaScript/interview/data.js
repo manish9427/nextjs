@@ -1,25 +1,44 @@
-const fun = (arr) =>{
-    let total = 0;
+// 1. Write a function that returns only users older than 28 age
+//  // 2. Write a function that groups users by city
+// // Expected output: { "NYC": [...], "LA": [...] }
+const users = [
+  { id: 1, name: "Alice", age: 25, city: "NYC" },
+  { id: 2, name: "Bob", age: 30, city: "LA" },
+  { id: 3, name: "Charlie", age: 25, city: "NYC" },
+  { id: 4, name: "David", age: 35, city: "LA" },
+];
 
-    for(let item of arr){
-        total += item.price * item.quantiy
-    }
+console.log(users[0].name)
 
-    let total2 = 0;
-    
-    arr.forEach((item) =>{
-        total2 += item.price * item.quantiy
-    })
-    console.log(total)
-    return {total,total2}
+const funMap =  (users) =>{
+    return users.map((item)=>item.name)
 }
 
-const arr = [
-    {product:"laptop",price:50000,quantiy:2}, // 100000
-    {product:"mobile",price:20000,quantiy:3}, // 60000
-    {product:"tablet",price:30000,quantiy:1}, // 30000
-    {product:"watch",price:10000,quantiy:4}, // 40000
-    {product:"headphone",price:8000,quantiy:6}, // 48000
-]
-const ans = fun(arr)
-console.log(ans.total,ans.total2)
+const ansMap = funMap(users)
+console.log("Ans from Map",ansMap)
+
+
+const funFilter = (users) =>{
+    return users.filter((item)=> item.age>28)
+}
+
+const ansFitler = funFilter(users)
+console.log(ansFitler)
+
+const fun = (users) => {
+  return users.filter((user) => {
+    return user.age > 28;
+  });
+};
+// const fun = (users) => {
+//   return users.reduce((acc, user) => {
+//     user.age > 28 ? acc.push(user) : null
+//     return acc
+//   }, []);
+// };
+const ans = fun(users);
+console.log(ans);
+
+// const groupByCity = () => {
+//     return 
+// }
