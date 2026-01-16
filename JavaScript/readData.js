@@ -1,4 +1,6 @@
-const fs = require('fs');
+// const fs = require('fs');
+import fs from 'fs';
+
 
 // Read the file synchronously
 const rawData = fs.readFileSync('data.json', 'utf-8');

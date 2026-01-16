@@ -1,6 +1,3 @@
-// 1. Write a function that returns only users older than 28 age
-//  // 2. Write a function that groups users by city
-// // Expected output: { "NYC": [...], "LA": [...] }
 const users = [
   { id: 1, name: "Alice", age: 25, city: "NYC" },
   { id: 2, name: "Bob", age: 30, city: "LA" },
@@ -8,37 +5,30 @@ const users = [
   { id: 4, name: "David", age: 35, city: "LA" },
 ];
 
-console.log(users[0].name)
+console.log(users[0].name);
+users.map((item) => item.name);
+users.filter((item) => item.age > 28);
+users.forEach((item) => {
+  console.log(item.name, item.age);
+});
 
-const funMap =  (users) =>{
-    return users.map((item)=>item.name)
+
+// 1. Write a function that returns only users older than 28 age
+const userOlderThan28 = (users) =>{
+    return users.reduce((acc,curr)=>curr.age>28 ? [...acc,curr] : acc,[])
+} 
+
+userOlderThan28(users)
+console.log(userOlderThan28(users));
+//  // 2. Write a function that groups users by city
+// // Expected output: { "NYC": [...], "LA": [...] }
+function groupUsersByCity(users) {
+  return users.reduce((acc, user) => {
+    if (!acc[user.city]) {
+      acc[user.city] = [];
+    }
+    acc[user.city].push(user);
+    return acc;
+  }, {});
 }
-
-const ansMap = funMap(users)
-console.log("Ans from Map",ansMap)
-
-
-const funFilter = (users) =>{
-    return users.filter((item)=> item.age>28)
-}
-
-const ansFitler = funFilter(users)
-console.log(ansFitler)
-
-const fun = (users) => {
-  return users.filter((user) => {
-    return user.age > 28;
-  });
-};
-// const fun = (users) => {
-//   return users.reduce((acc, user) => {
-//     user.age > 28 ? acc.push(user) : null
-//     return acc
-//   }, []);
-// };
-const ans = fun(users);
-console.log(ans);
-
-// const groupByCity = () => {
-//     return 
-// }
+console.log(groupUsersByCity(users));
