@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react"
 
-const practice = () => {
+const Practice = () => {
   const [data,setData] = useState([])
   const [page,setPage] = useState(1)
   useEffect(()=>{
@@ -46,4 +46,4 @@ const practice = () => {
   )
 }
 
-export default practice
+export default Practice
