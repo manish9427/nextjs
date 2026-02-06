@@ -1,5 +1,5 @@
 import NavBar from "./nav-bar";
-
+import "../styles/layout.css"
 
 export default function Layout({ children }) {
   return (

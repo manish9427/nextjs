@@ -17,7 +17,7 @@ const users = [
 
 // fun()
 
-//  id, name, age [["1","Manish"],["2","Neeraj"]]
+//  id, name, age [["1","Manish"],["2","Neeraj"]] print age 
 
 const arr = [["1","Manish",32],["2","Neeraj", 24]]
 
