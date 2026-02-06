@@ -8,7 +8,7 @@ const users = [
   { id: 4, name: "David", age: 35, city: "LA" }
 ];
 
-console.log(users.id.age)
+// console.log(users.id.age)
 
 // const fun = (users) =>{
 //     const userAge = users.filter((users)=>users.age>28)
@@ -16,4 +16,13 @@ console.log(users.id.age)
 // }
 
 // fun()
+
+//  id, name, age [["1","Manish"],["2","Neeraj"]]
+
+const arr = [["1","Manish",32],["2","Neeraj", 24]]
+
+for(let i= 0;i<arr.length;i++){
+  // for (let j=0;j<arr.length;j++){
+    console.log(arr[i][2])
+}
 
