@@ -10,8 +10,8 @@ export default function NavBar() {
     { label: "Store", path: "/Store" },
     { label: "Todo List", path: "/TodoList" },
     { label: "Spotify", path: "/Spotify" },
-    { label: "Practice", path: "/Practice" },
     { label: "Drop Down", path: "/DropDown" },
+    { label: "Practice", path: "/Practice" },
   ];
 
   return (
