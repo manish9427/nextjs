@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import "../styles/calculator.css";
+import "./Calculator.css";
 
 const Calculator = () => {
   const [input, setInput] = useState("");

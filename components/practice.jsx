@@ -2,7 +2,7 @@
 
 import React,{useState,useEffect} from 'react'
 
-const practice = () => {
+const Practice = () => {
 
   const [todo, setTodo] = useState([])
     useEffect(()=>{
@@ -19,4 +19,4 @@ const practice = () => {
   )
 }
 
-export default practice
+export default Practice

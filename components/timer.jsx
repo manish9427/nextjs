@@ -1,7 +1,5 @@
 "use client";
-import React from 'react';
-
-import { useState,useRef,useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Timer = () => {
     const [time, setTime] = useState(0);
@@ -25,6 +23,12 @@ const Timer = () => {
     useEffect(() => {
         document.title = `Timer App - ${isRunning ? 'Running' : 'Paused'} (${time}s)`;
     }, [time, isRunning]);
+
+    useEffect(() => {
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+        };
+    }, []);
 
     const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);

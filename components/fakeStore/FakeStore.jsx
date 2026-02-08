@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import "../styles/store.css";
+import "./FakeStore.css";
 
-const Store = () => {
+const FakeStore = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
@@ -65,4 +65,4 @@ const Store = () => {
   );
 };
 
-export default Store;
+export default FakeStore;

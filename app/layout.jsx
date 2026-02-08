@@ -1,8 +1,7 @@
 import Providers from "./providers";
-import NavBar from "@/components/nav-bar";
-import "@/app/globals.css";
-import "@/styles/layout.css";
-import "@/styles/nav-bar.css";
+import NavBar from "@/components/navBar/NavBar";
+import "./layout.css";
+
 
 export const metadata = {
   title: "My Next.js App",

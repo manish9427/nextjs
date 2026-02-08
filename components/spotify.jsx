@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function SpotifyTopTracksPreview() {
+export default function Spotify() {
   const [tracks, setTracks] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
