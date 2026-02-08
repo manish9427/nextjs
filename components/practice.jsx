@@ -1,26 +1,22 @@
-import react, { useState, useEffect } from "react";
+"use client";
 
-const Practice = () => {
-  const [data, setData] = useState([]);
+import React,{useState,useEffect} from 'react'
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/todos")
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json);
-        console.log(json);
-      });
-  }, []);
-  return (
-    <>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-      {
-        data.map((item)=>(
-          <div key={item.id}>{item.title}</div>
-        ))
+const practice = () => {
+
+  const [todo, setTodo] = useState([])
+    useEffect(()=>{
+      const fetchTodos = async() =>{
+
+        const res= await fetch("https://jsonplaceholder.typicode.com/todos")
+        const data = await res.json()
+        setTodo(data)
       }
-    </>
-  );
-};
+      fetchTodos()
+    },[])
+  return (
+    <pre>{JSON.stringify(todo,null,2)}</pre>
+  )
+}
 
-export default Practice;
+export default practice

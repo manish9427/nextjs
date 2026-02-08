@@ -1,5 +1,7 @@
-import { useState, useEffect } from "react";
-import "../styles/store.css";
+\"use client\";
+
+import { useState, useEffect } from \"react\";
+import \"../styles/store.css\";
 
 const Store = () => {
   const [data, setData] = useState([]);
