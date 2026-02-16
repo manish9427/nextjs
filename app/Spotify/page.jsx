@@ -1,4 +1,4 @@
-import Spotify from "../../components/Spotify";
+import Spotify from "../../components/spotify/Spotify";
 
 export default function Page() {
   return (

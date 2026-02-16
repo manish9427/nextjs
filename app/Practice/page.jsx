@@ -1,4 +1,4 @@
-import Practice from "../../components/Practice";
+import Practice from "../../components/practice/Practice";
 
 export default function Page() {
   return (

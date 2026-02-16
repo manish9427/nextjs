@@ -1,4 +1,4 @@
-import DropDown from "../../components/DropDown";
+import DropDown from "../../components/dropDown/DropDown";
 
 export default function Page() {
   return (

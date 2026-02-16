@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement, reset } from '../redux/slices/counterSlice';
+import { increment, decrement, reset } from '../../redux/slices/counterSlice';
 
 function Counter() {
   const count = useSelector((state) => state.counter.value);

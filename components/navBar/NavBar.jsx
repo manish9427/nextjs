@@ -7,7 +7,7 @@ export default function NavBar() {
     { label: "Timer", path: "/Timer" },
     { label: "Calculator", path: "/Calculator" },
     { label: "Slider", path: "/Slider" },
-    { label: "Store", path: "/Store" },
+    { label: "FakeStore", path: "/FakeStore" },
     { label: "Todo List", path: "/TodoList" },
     { label: "Spotify", path: "/Spotify" },
     { label: "Drop Down", path: "/DropDown" },
