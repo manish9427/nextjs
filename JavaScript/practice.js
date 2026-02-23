@@ -1,28 +1,31 @@
-// 1. Write a function that returns only users older than 28 age
-// 2. Write a function that groups users by city
-//    Expected output: { "NYC": [...], "LA": [...] }
-const users = [
-  { id: 1, name: "Alice", age: 25, city: "NYC" },
-  { id: 2, name: "Bob", age: 30, city: "LA" },
-  { id: 3, name: "Charlie", age: 25, city: "NYC" },
-  { id: 4, name: "David", age: 35, city: "LA" }
-];
+const agents = ["A1", "A2", "A3"]; 
+const leads = [ 
+  { id: 1, name: "Lead 1" }, 
+  { id: 2, name: "Lead 2" }, 
+  { id: 3, name: "Lead 3" }, 
+  { id: 4, name: "Lead 4" }, 
+  { id: 5, name: "Lead 5" }, 
+  { id: 6, name: "Lead 6" }, 
+  { id: 7, name: "Lead 7" }, 
+]; 
 
-// console.log(users.id.age)
+const fun = (leads,agents) => {
 
-// const fun = (users) =>{
-//     const userAge = users.filter((users)=>users.age>28)
-//     console.log(userAge) ;
-// }
+  const result = {}
+  for(let i = 0; i<agents.length;i++){
+    result[agents[i]] = []
+  }
+  for(let i=0;i<leads.length;i++){
+    const agentIndex = i%agents.length;
+    const agentName = agents[agentIndex]
 
-// fun()
-
-//  id, name, age [["1","Manish"],["2","Neeraj"]] print age 
-
-const arr = [["1","Manish",32],["2","Neeraj", 24]]
-
-for(let i= 0;i<arr.length;i++){
-  // for (let j=0;j<arr.length;j++){
-    console.log(arr[i][2])
+    result[agentName].push(leads[i].id)
+  }
+  return result
 }
 
+console.log(fun(leads,agents))
+
+
+
+ 
