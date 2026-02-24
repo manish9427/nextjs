@@ -25,23 +25,6 @@ const funCity = (leads)=>{
 
 console.log(funCity(leads))
 
-const funGroupId = (leads) => {
-  const result = {}
-
-  for(let i=0;i<leads.length;i++){
-
-    let lead = leads[i]
-    let ids = lead.id
-    if(!result[ids]){
-      result[ids] = []
-    }
-    result[ids].push(leads[i])
-  }
-  return result
-}
-
-console.log(funGroupId(leads))
-
 const fun = (agents,leads) => {
   const result = {}
   for(let i=0;i<agents.length;i++){
@@ -56,9 +39,5 @@ const fun = (agents,leads) => {
 }
 
 console.log(fun(agents,leads))
-
-
-
-
 
  
