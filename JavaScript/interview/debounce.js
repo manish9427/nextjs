@@ -13,6 +13,17 @@ const search = (query) =>{
 }
 const searchDebounce = debounce(search,1000)
 
-searchDebounce("Manish")
-searchDebounce("Verma")
+searchDebounce("J"); 
+
+searchDebounce("Ja"); 
+
+searchDebounce("Jav"); 
+
+searchDebounce("Java"); 
+
+setTimeout(()=>(searchDebounce("JavaS")),1000) 
+
+setTimeout(()=>(searchDebounce("JavaSC")),2000) 
+
+setTimeout(()=>(searchDebounce("JavaSCR")),3000) 
 
