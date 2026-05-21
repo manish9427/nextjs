@@ -15,8 +15,8 @@ data.forEach(item => {
 
 const now = new Date();
 
-const date = now.toLocaleDateString();   // e.g. "12/9/2025"
-const time = now.toLocaleTimeString();   // e.g. "6:39:00 PM"
+const date = now.toLocaleDateString(); // e.g. "12/9/2025"
+const time = now.toLocaleTimeString(); // e.g. "6:39:00 PM"
 
 console.log("Date:", date);
 console.log("Time:", time);

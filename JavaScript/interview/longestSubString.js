@@ -6,7 +6,7 @@ const fun = (s) =>{
     let maxLength = 0;
     
     for(let right=0;right<s.length;right++){
-        if(set.has(s[right])){
+        while(set.has(s[right])){
             set.delete(s[left]);
             left++;
         }

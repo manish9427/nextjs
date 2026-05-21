@@ -25,11 +25,9 @@ setTimeout(() => {
 
 
 
-
 // Closure
 
-let i 
-for(i=0;i<5;i++){
+// By using 'let' inside the for loop declaration, each iteration gets its own block-scoped 'i'.
+for(let i=0;i<5;i++){
   setTimeout(()=>{console.log(i)},100)
 }
-

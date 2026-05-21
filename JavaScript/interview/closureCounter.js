@@ -25,5 +25,5 @@ const counter = createCounter();
 console.log(counter.increment()); // 1
 console.log(counter.decrement()); // 0
 console.log(counter.increment()); // 1
-console.log(counter.reset()); // 12
-console.log(counter.getCount()); // 12
+console.log(counter.reset()); // 0
+console.log(counter.getCount()); // 0
